@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:alpine
+    container_name: taskFive
+    ports:
+      - "54321:5432"
+    volumes:
+      - ./initdb/db.sql:/docker-entrypoint-initdb.d/db.sql
+      - ./initdb/dbdata:/data/postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: taskF
+      PG_DATA: data/postgres
+
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - "6379:6379"
+
+  stan:
+    container_name: stanserver
+    image: nats-streaming:alpine
+    ports:
+      - "4224:4222"
+      - "8223:8222"
+    volumes:
+      - ./nats-tools:/nats-tools
+    command:
+      - "--store"
+      - "file"
+      - "--dir"
+      - "data"
+
+  clickhouse:
+    container_name: clickhouse
+    image: yandex/clickhouse-server
+    volumes:
+      - ./initdb/clDB.sql:/docker-entrypoint-initdb.d/clDB.sql
+    ports:
+      - "8123:8123"
+      - "9000:9000"

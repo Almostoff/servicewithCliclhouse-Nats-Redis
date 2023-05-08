@@ -1,0 +1,24 @@
+database:
+  host: "localhost"
+  port: "54321"
+  user: "admin"
+  pass: "root"
+  dbname: "taskF"
+  driverName: "postgres"
+
+redis:
+  addr: "localhost:6379"
+  password: ""
+  db: 0
+
+nats:
+  cluster_id: "test-cluster"
+  client_id: "test-client"
+  url: "localhost:4224"
+
+cHouse:
+  host: "localhost"
+  port: "9000"
+  database: "default"
+  username: "default"
+  password: ""

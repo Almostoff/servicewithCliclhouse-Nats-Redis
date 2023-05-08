@@ -1,0 +1,37 @@
+POST http://localhost:8181/1/item/create
+content-type: application/json
+
+{
+  "name": "first name"
+}
+
+###
+PATCH http://localhost:8181/1/item/update/4
+content-type: application/json
+
+{
+  "name": "TestAfter",
+  "description": "testPATCH"
+}
+
+###
+
+PATCH http://localhost:8181/1/item/update/88
+content-type: application/json
+
+{
+  "name": "TestBefore",
+  "description": "testPATCH"
+}
+
+###
+
+DELETE http://localhost:8181/1/item/remove/122
+Accept: application/json
+
+###
+
+GET http://localhost:8181/items/list
+Accept: application/json
+
+###
